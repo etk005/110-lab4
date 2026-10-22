@@ -48,6 +48,16 @@ export class GameScreenView implements View {
 
 		// TODO: Task 2 - Load and display lemon image using Konva.Image.fromURL()
 		// Placeholder circle (remove this when implementing the image)
+		Konva.Image.fromURL("/lemon.png", (image) => {
+			this.lemonImage.destroy();
+			this.lemonImage = image.setAttrs({
+				x: STAGE_WIDTH / 2,
+				y: STAGE_HEIGHT / 2,
+				offsetX: image.width() / 2,
+				offsetY: image.height() / 2
+			}).on("click", onLemonClick);
+			this.group.add(this.lemonImage);
+		});
 		const placeholder = new Konva.Circle({
 			x: STAGE_WIDTH / 2,
 			y: STAGE_HEIGHT / 2,
